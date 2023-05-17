@@ -42,9 +42,8 @@ function checkDevice() {
   ) {
     // está utilizando celular
     pipe.style.animationDuration = "1s";
-    sound.style.width = "50px"
-    sound.style.height = "50px"
-
+    sound.style.width = "50px";
+    sound.style.height = "50px";
 
     const altura = window.innerHeight;
     const largura = window.innerWidth;
@@ -217,7 +216,11 @@ function restartGame() {
 
   scoreCount = 0;
   score.textContent = scoreCount;
-  pipe.style.animation = "pipe-animation 1.5s infinite linear";
+  if (checkDevice) {
+    pipe.style.animation = "pipe-animation 1.0s infinite linear";
+  } else {
+    pipe.style.animation = "pipe-animation 1.5s infinite linear";
+  }
 
   const menu = document.querySelector(".menu");
   const gameOver = document.querySelector(".game-over");
