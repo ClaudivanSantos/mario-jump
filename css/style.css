@@ -1,226 +1,226 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'New Super Mario Font U', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "New Super Mario Font U", sans-serif;
 }
 
-
 .game-board {
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(#87ceeb, #e0f6ff);
-  
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(#87ceeb, #e0f6ff);
 }
 
 .pipe {
-    position: absolute;
-    bottom: 0;
-    width: 70px;
-    animation: pipe-animation 1.5s infinite linear;
-    margin-bottom: 25px;
+  position: absolute;
+  bottom: 0;
+  width: 70px;
+  animation: pipe-animation 1.5s infinite linear;
+  margin-bottom: 25px;
 }
 
 .mario {
-    width: 150px;
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 25px;
+  width: 150px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 25px;
 }
 
 .jump {
-    animation: jump 500ms ease-out;
+  animation: jump 500ms ease-out;
 }
 
 .clouds {
-    position: absolute;
-    width: 550px;
-    animation: clouds-animation 20s infinite linear;
+  position: absolute;
+  width: 550px;
+  animation: clouds-animation 20s infinite linear;
 }
 
 .clouds2 {
-    position: absolute;
-    width: 300px;
-    animation: clouds-animation2 15s infinite linear;
+  position: absolute;
+  width: 300px;
+  animation: clouds-animation2 15s infinite linear;
 }
 
 /*Piso*/
 .floor {
-    width: 1500px;
-    position: absolute;
-    bottom: 0;
-    padding-bottom: 34px;
-
+  width: 1500px;
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 34px;
 }
 
 .floor-1 {
-    position: absolute;
-    z-index: 0;
+  position: absolute;
+  z-index: 0;
 }
 
 .floor-animation-1 {
-    animation: floor-animation-1 3.1s infinite linear;
+  animation: floor-animation-1 3.1s infinite linear;
 }
 
 .floor-2 {
-    position: absolute;
-    right: -1500px;
-    z-index: 10;
+  position: absolute;
+  right: -1500px;
+  z-index: 10;
 }
 
 .floor-animation-2 {
-    animation: floor-animation-2 6.2s infinite linear;
+  animation: floor-animation-2 6.2s infinite linear;
 }
 
-
-
 .floor-3 {
-    position: absolute;
-    right: -1500px;
-    z-index: 10;
+  position: absolute;
+  right: -1500px;
+  z-index: 10;
 }
 
 .floor-animation-3 {
-    animation: floor-animation-3 6.2s infinite linear;
+  animation: floor-animation-3 6.2s infinite linear;
 }
 
-
-
 .menu-score {
-    display: flex;
-    font-family: fantasy;
-    margin-left: 10px;
+  display: flex;
+  font-family: fantasy;
+  margin-left: 10px;
+  text-align: center;
+  align-items: center;
 }
 
 .score {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .grass {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 25px;
-    width: 120px;
-    animation: grass-animation 5s infinite linear;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 25px;
+  width: 120px;
+  animation: grass-animation 5s infinite linear;
 }
 
 .game-over {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: none;
 }
-
 
 .menu {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-#btnPlay{
-    width: 5rem;
+.sound{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
 }
 
-#btnRefresh{
-    width: 5rem;
+#btnPlay {
+  width: 5rem;
+}
+
+#btnRefresh {
+  width: 5rem;
 }
 
 @keyframes floor-animation-1 {
-    0% {
-        right: 0px;
-    }
+  0% {
+    right: 0px;
+  }
 
-    100% {
-        right: 100%;
-    }
+  100% {
+    right: 100%;
+  }
 }
 
 @keyframes floor-animation-2 {
-    0% {
-        right: -1500px;
-    }
+  0% {
+    right: -1500px;
+  }
 
-    100% {
-        right: 100%;
-    }
+  100% {
+    right: 100%;
+  }
 }
 
 @keyframes floor-animation-3 {
-    0% {
-        right: -1500px;
-    }
+  0% {
+    right: -1500px;
+  }
 
-    100% {
-        right: 100%;
-    }
+  100% {
+    right: 100%;
+  }
 }
 
 @keyframes grass-animation {
-    from {
-        right: -80px;
-    }
+  from {
+    right: -80px;
+  }
 
-    to {
-        right: 100%;
-    }
+  to {
+    right: 100%;
+  }
 }
 
 @keyframes pipe-animation {
-    from {
-        right: -80px;
-    }
+  from {
+    right: -80px;
+  }
 
-    to {
-        right: 100%;
-    }
+  to {
+    right: 100%;
+  }
 }
 
 @keyframes clouds-animation {
-    from {
-        right: -550px;
-    }
+  from {
+    right: -550px;
+  }
 
-    to {
-        right: 100%;
-    }
+  to {
+    right: 100%;
+  }
 }
 
 @keyframes clouds-animation2 {
-    from {
-        right: -300px;
-    }
+  from {
+    right: -300px;
+  }
 
-    to {
-        right: 100%;
-    }
+  to {
+    right: 100%;
+  }
 }
 
 @keyframes jump {
-    0% {
-        bottom: 0;
-    }
+  0% {
+    bottom: 0;
+  }
 
-    40% {
-        bottom: 180px;
-    }
+  40% {
+    bottom: 180px;
+  }
 
-    50% {
-        bottom: 180px;
-    }
+  50% {
+    bottom: 180px;
+  }
 
-    60% {
-        bottom: 180px;
-    }
+  60% {
+    bottom: 180px;
+  }
 
-    100% {
-        bottom: 0;
-    }
+  100% {
+    bottom: 0;
+  }
 }

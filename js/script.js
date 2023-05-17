@@ -8,14 +8,27 @@ const textHelp = document.querySelector(".text-help");
 const floor1 = document.querySelector(".floor-1");
 const floor2 = document.querySelector(".floor-2");
 const floor3 = document.querySelector(".floor-3");
-const btnPlay = document.getElementById('btnPlay');
-const btnRefresh = document.getElementById('btnRefresh');
+const btnPlay = document.getElementById("btnPlay");
+const btnRefresh = document.getElementById("btnRefresh");
 const audioStart = new Audio("./audio/theme.mp3");
 const audioGameOver = new Audio("./audio/gameover.mp3");
+const sound = document.querySelector(".sound");
 
-btnPlay.addEventListener('click', startGame);
+btnPlay.addEventListener("click", startGame);
 
 let isRunning = true;
+
+let isAudioOn = true;
+
+function toggleAudio() {
+  isAudioOn = !isAudioOn;
+  audioGameOver.pause();
+  if (isAudioOn) {
+    sound.src = "./images/sound.png";
+  } else {
+    sound.src = "./images/nosound.png";
+  }
+}
 
 function checkDevice() {
   if (
@@ -77,11 +90,12 @@ setInterval(floorAnimation3, 3100);
 function startGame() {
   document.addEventListener("keydown", jump);
   document.addEventListener("click", jump);
-  console.log("começou")
   const menu = document.querySelector(".menu");
   menu.style.display = "none";
-  audioStart.play();
-
+  sound.style.display = "none";
+  if (isAudioOn) {
+    audioStart.play();
+  }
   const loop = setInterval(() => {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window
@@ -94,7 +108,6 @@ function startGame() {
         pipePosition > 0 &&
         marioPosition < (checkDevice ? 80 : 90)
       ) {
-        console.log("perdeu")
         pipe.style.animationPlayState = "paused";
 
         grass.style.animationPlayState = "paused";
@@ -118,62 +131,76 @@ function startGame() {
       scoreCount++;
       num = Number(String(scoreCount).slice(0, -2));
       score.textContent = num;
-
-    }
-    console.log(pipe.style.animationDuration)
-
-    if (num > 5 && num < 10 ) {
-      pipe.style.animationDuration = "1.4s";
-      pipe.style.right = 0;
     }
 
-    if (num > 10 && num < 15 ) {
-      pipe.style.animationDuration = "1.3s";
-      pipe.style.right = 0;
+    if (num === 5 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth; // força reflow (força o navegador a recalcular a posição de todos os elementos para a próxima renderização)
+      pipe.style.animation = "pipe-animation 1.4s infinite linear";
     }
-
-    if (num > 15 && num < 20 ) {
-      pipe.style.animationDuration = "1.2s";
-      pipe.style.right = 0;
+    if (num === 10 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 1.3s infinite linear";
     }
-    if (num > 25 && num < 30) {
-      pipe.style.animationDuration = "1.1s";
-      pipe.style.right = 0;
+    if (num === 15 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 1.2s infinite linear";
     }
-    if (num > 30 && num < 35) {
-      pipe.style.animationDuration = "1.0s";
-      pipe.style.right = 0;
+    if (num === 20 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 1.1s infinite linear";
     }
-    if (num > 35 && num < 40) {
-      pipe.style.animationDuration = "0.9s";
-      pipe.style.right = 0;
+    if (num === 25 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 1s infinite linear";
     }
-    if (num > 40 && num < 45) {
-      pipe.style.animationDuration = "0.8s";
-      pipe.style.right = 0;
+    if (num === 30 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 0.9s infinite linear";
     }
-    if (num > 45 && num < 50) {
-      pipe.style.animationDuration = "0.7s";
-      pipe.style.right = 0;
+    if (num === 35 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 0.8s infinite linear";
+    }
+    if (num === 40 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 1.3s infinite linear";
+    }
+    if (num === 45 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 0.6s infinite linear";
+    }
+    if (num === 50 && pipe.offsetLeft < 0) {
+      pipe.style.animation = "none";
+      pipe.offsetWidth;
+      pipe.style.animation = "pipe-animation 0.5s infinite linear";
     }
   }, 10);
 }
 
 function endGame() {
-  console.log("função fim de jogo")
   isRunning = false;
   audioStart.pause();
-  audioGameOver.play();
+  sound.style.display = "block";
+  if (isAudioOn) {
+    audioGameOver.play();
+  }
   const gameOver = document.querySelector(".game-over");
   gameOver.style.display = "block";
-  pipe.style.animationDuration = (!checkDevice ? "1.5" : "1.0");
+  pipe.style.animationDuration = !checkDevice ? "1.5" : "1.0";
 
-  btnRefresh.addEventListener('click', restartGame);
+  btnRefresh.addEventListener("click", restartGame);
 }
 
-
 function restartGame() {
-  console.log("Começou de novo")
   audioGameOver.pause();
   pipe.style.animationPlayState = "running";
   mario.style.animationPlayState = "running";
@@ -181,12 +208,12 @@ function restartGame() {
   floor2.style.animationPlayState = "running";
   floor3.style.animationPlayState = "running";
   grass.style.animationPlayState = "running";
-  
 
   // Reinicialize todas as variáveis do jogo aqui
 
   scoreCount = 0;
   score.textContent = scoreCount;
+  pipe.style.animation = "pipe-animation 1.5s infinite linear";
 
   const menu = document.querySelector(".menu");
   const gameOver = document.querySelector(".game-over");
@@ -196,20 +223,15 @@ function restartGame() {
 
   mario.src = "./images/mario.gif";
   mario.style.width = "150px";
-  mario.style.bottom = "0"
+  mario.style.bottom = "0";
   mario.style.marginLeft = "0";
-
 
   function newGame() {
     setTimeout(() => {
       isRunning = true;
     }, 2000);
-    
-    startGame()
+
+    startGame();
   }
-  newGame()
+  newGame();
 }
-
-
-
-
