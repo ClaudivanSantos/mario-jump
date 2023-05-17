@@ -42,6 +42,9 @@ function checkDevice() {
   ) {
     // está utilizando celular
     pipe.style.animationDuration = "1s";
+    sound.style.width = "50px"
+    sound.style.height = "50px"
+
 
     const altura = window.innerHeight;
     const largura = window.innerWidth;
@@ -94,6 +97,7 @@ function startGame() {
   menu.style.display = "none";
   sound.style.display = "none";
   if (isAudioOn) {
+    audioStart.currentTime = 0;
     audioStart.play();
   }
   const loop = setInterval(() => {

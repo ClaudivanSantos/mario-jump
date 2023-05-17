@@ -37,12 +37,14 @@
   position: absolute;
   width: 550px;
   animation: clouds-animation 20s infinite linear;
+  z-index: 0;
 }
 
 .clouds2 {
   position: absolute;
   width: 300px;
   animation: clouds-animation2 15s infinite linear;
+  z-index: 0;
 }
 
 /*Piso*/
@@ -88,6 +90,7 @@
   margin-left: 10px;
   text-align: center;
   align-items: center;
+  z-index: 1;
 }
 
 .score {
@@ -109,6 +112,7 @@
   transform: translate(-50%, -50%);
   text-align: center;
   display: none;
+  z-index: 1;
 }
 
 .menu {
@@ -117,12 +121,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  z-index: 1;
 }
 
 .sound{
   width: 20px;
   height: 20px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 #btnPlay {
