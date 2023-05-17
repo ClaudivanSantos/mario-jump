@@ -41,7 +41,7 @@ function checkDevice() {
     navigator.userAgent.match(/Windows Phone/i)
   ) {
     // está utilizando celular
-    pipe.style.animationDuration = "1s";
+    pipe.style.animationDuration = "1.4s";
     sound.style.width = "50px";
     sound.style.height = "50px";
 
@@ -217,7 +217,7 @@ function restartGame() {
   scoreCount = 0;
   score.textContent = scoreCount;
   if (checkDevice) {
-    pipe.style.animation = "pipe-animation 1.0s infinite linear";
+    pipe.style.animation = "pipe-animation 1.4s infinite linear";
   } else {
     pipe.style.animation = "pipe-animation 1.5s infinite linear";
   }
