@@ -136,17 +136,17 @@ function startGame() {
       score.textContent = num;
     }
 
-    if (num === 5 && pipe.offsetLeft < 0) {
+    if (num === 5 && pipe.offsetLeft < 0 && !checkDevice) {
       pipe.style.animation = "none";
       pipe.offsetWidth; // força reflow (força o navegador a recalcular a posição de todos os elementos para a próxima renderização)
       pipe.style.animation = "pipe-animation 1.4s infinite linear";
     }
-    if (num === 10 && pipe.offsetLeft < 0) {
+    if (num === 10 && pipe.offsetLeft < 0 && !checkDevice) {
       pipe.style.animation = "none";
       pipe.offsetWidth;
       pipe.style.animation = "pipe-animation 1.3s infinite linear";
     }
-    if (num === 15 && pipe.offsetLeft < 0) {
+    if (num === 15 && pipe.offsetLeft < 0 && !checkDevice) {
       pipe.style.animation = "none";
       pipe.offsetWidth;
       pipe.style.animation = "pipe-animation 1.2s infinite linear";
