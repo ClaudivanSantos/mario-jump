@@ -41,7 +41,7 @@ function checkDevice() {
     navigator.userAgent.match(/Windows Phone/i)
   ) {
     // está utilizando celular
-    pipe.style.animationDuration = "1.4s";
+    pipe.style.animationDuration = "1.2s";
     sound.style.width = "50px";
     sound.style.height = "50px";
 
