@@ -41,7 +41,7 @@ function checkDevice() {
     navigator.userAgent.match(/Windows Phone/i)
   ) {
     // está utilizando celular
-    pipe.style.animationDuration = "1.0s";
+    
     sound.style.width = "50px";
     sound.style.height = "50px";
 
@@ -50,11 +50,15 @@ function checkDevice() {
 
     if (altura > largura) {
       textHelp.textContent = `(Para uma melhor experiência, vire a tela na horizontal)`;
+      pipe.style.animationDuration = "0.9s";
+    }else{
+      pipe.style.animationDuration = "1.3s";
     }
 
     return true;
   }
 }
+
 checkDevice();
 
 audioStart.addEventListener("ended", () => {
@@ -89,6 +93,7 @@ function floorAnimation3() {
 setInterval(floorAnimation3, 3100);
 
 function startGame() {
+  checkDevice();
   document.addEventListener("keydown", jump);
   document.addEventListener("click", jump);
   const menu = document.querySelector(".menu");
@@ -134,28 +139,33 @@ function startGame() {
       num = Number(String(scoreCount).slice(0, -2));
       score.textContent = num;
     }
+    const altura = window.innerHeight;
+    const largura = window.innerWidth;
 
-    if (num === 5 && pipe.offsetLeft < 0 && !checkDevice) {
+    console.log(altura, largura)
+
+    if (num === 5 && pipe.offsetLeft < 0 && checkDevice == false) {
+      console.log("aqui")
       pipe.style.animation = "none";
-      pipe.offsetWidth; // força reflow (força o navegador a recalcular a posição de todos os elementos para a próxima renderização)
+      pipe.offsetWidth; 
       pipe.style.animation = "pipe-animation 1.4s infinite linear";
     }
-    if (num === 10 && pipe.offsetLeft < 0 && !checkDevice) {
+    if (num === 10 && pipe.offsetLeft < 0 && altura < largura) {
       pipe.style.animation = "none";
       pipe.offsetWidth;
       pipe.style.animation = "pipe-animation 1.3s infinite linear";
     }
-    if (num === 15 && pipe.offsetLeft < 0 && !checkDevice) {
+    if (num === 15 && pipe.offsetLeft < 0 && altura < largura) {
       pipe.style.animation = "none";
       pipe.offsetWidth;
       pipe.style.animation = "pipe-animation 1.2s infinite linear";
     }
-    if (num === 20 && pipe.offsetLeft < 0) {
+    if (num === 20 && pipe.offsetLeft < 0 && altura < largura) {
       pipe.style.animation = "none";
       pipe.offsetWidth;
       pipe.style.animation = "pipe-animation 1.1s infinite linear";
     }
-    if (num === 25 && pipe.offsetLeft < 0) {
+    if (num === 25 && pipe.offsetLeft < 0&& altura < largura) {
       pipe.style.animation = "none";
       pipe.offsetWidth;
       pipe.style.animation = "pipe-animation 1s infinite linear";
